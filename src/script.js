@@ -112,9 +112,15 @@ const generateGalaxy = () => {
 
 generateGalaxy();
 
-// Add new GUI controls
-gui.add(parameters, "animationSpeed", 0, 2, 0.01).name("Animation speed");
-gui.add(parameters, "motionRadius", 0, 0.5, 0.01).name("Motion radius");
+// Add GUI controls
+gui
+  .add(parameters, "animationSpeed", 0, 2, 0.01)
+  .onFinishChange(generateGalaxy)
+  .name("Animation speed");
+gui
+  .add(parameters, "motionRadius", 0, 0.5, 0.01)
+  .onFinishChange(generateGalaxy)
+  .name("Motion radius");
 
 gui
   .add(parameters, "count")
@@ -143,7 +149,7 @@ gui
   .max(20)
   .step(1)
   .onFinishChange(generateGalaxy)
-  .name("Branches amount");
+  .name("Branch count");
 gui
   .add(parameters, "spin")
   .min(-5)
@@ -252,4 +258,3 @@ const tick = () => {
 };
 
 tick();
-
